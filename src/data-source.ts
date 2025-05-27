@@ -1,0 +1,17 @@
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import {Preguntas} from "./models/Preguntas";
+import {Respuestas} from "./models/Respuestas";
+import {Usuarios} from "./models/Usuarios";
+
+export const AppDataSource = new DataSource({
+    type: "postgres",
+    host: "localhost", 
+    port: 5432,
+    username: "postgres",
+    password: "Hola",
+    database: "Game",
+    synchronize: true,
+    logging: false,
+    entities: [Preguntas, Respuestas, Usuarios],
+});

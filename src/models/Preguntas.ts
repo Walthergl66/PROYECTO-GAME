@@ -1,0 +1,1 @@
+import { Entity, Pri } from "typeorm";
