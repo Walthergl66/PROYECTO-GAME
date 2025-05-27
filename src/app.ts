@@ -3,8 +3,9 @@ import "reflect-metadata";
 import express from "express";
 import { AppDataSource } from "./data-source";
 import Router from "./routes/PreguntasR";
-
+import UsuarioR from "./routes/UsuarioR";
 const app = express();
+app.use("/models/usuarios", UsuarioR);
 app.use(express.json());
 
 // Conectar a la base de datos
