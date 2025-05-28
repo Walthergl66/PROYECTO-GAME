@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url('../img/fondo.avif') no-repeat center center fixed;
+  background-size: cover;      
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: #00ffff;
+  text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+  margin-bottom: 50px;
+}
+
+/* Contenedor principal del juego */
+#game {
+  background: linear-gradient(145deg, #1a1a2e, #0f0f1c);
+  padding: 50px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.6);
+  border: 3px solid #00ffff;
+}
+
+/* Pregunta */
+#question-container {
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-bottom: 50px;
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.7);
+}
+
+#question-text {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+  margin-bottom: 30px;
+}
+
+/* Opciones */
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.options button {
+  background: transparent;
+  border: 3px solid #ff00ff;
+  padding: 25px 30px;
+  border-radius: 15px;
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+}
+
+.options button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 15px;
+  z-index: -1;
+}
+
+.options button:hover::before {
+  opacity: 0.8;
+}
+
+.options button:hover {
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 20px #00ffff;
+  transform: scale(1.08);
+}
+
+/* Estado del juego */
+#status {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+/* ESTILO PARA MOSTRAR RESULTADO  */
+/* Resultado Final */
+#resultado-container {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(145deg, #0f0f1c, #1a1a2e);
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(255, 0, 255, 0.6);
+  color: #fff;
+  animation: fadeIn 1s ease forwards;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#resultado-container h2 {
+  font-size: 3rem;
+  color: #00ffff;
+  text-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff;
+  margin-bottom: 20px;
+}
+
+#puntos-finales {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+#resultado-container button {
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  border: none;
+  color: #000;
+  font-size: 1.8rem;
+  padding: 15px 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #00ffff;
+  transition: all 0.3s ease;
+}
+
+#resultado-container button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ff00ff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

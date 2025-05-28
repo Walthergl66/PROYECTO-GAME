@@ -1,93 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="stylesheet" href="./Static/css/index.css">
+  <link rel="shortcut icon" href="./Static/favicon.ico" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login de Usuario</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-      align-items: center;
-    }
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-    }
-    input {
-      width: 100%;
-      padding: 8px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #007bff;
-      border: none;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .error {
-      color: red;
-      font-size: 0.9em;
-    }
-  </style>
+  <title>TRIVILANIA</title>
 </head>
 <body>
+  <h1>TRIVILANIA</h1>
+  <div id="game">
+  <div class="question" id="question-container">
+    <h2 id="question-text"></h2>
+    <div class="options" id="options-container"></div>
+  </div>
 
-  <form id="loginForm">
-    <h2>Iniciar Sesión</h2>
-    <input type="email" id="email" placeholder="Correo electrónico" required />
-    <input type="password" id="password" placeholder="Contraseña" required />
-    <button type="submit">Entrar</button>
-    <p class="error" id="errorMsg"></p>
-  </form>
+  <div class="resultado" id="resultado-container" style="display: none;">
+    <h2>Juego Terminado</h2>
+    <p id="puntos-finales"></p>
+    <button onclick="reiniciarJuego()">Jugar de nuevo</button>
+  </div>
 
-  <script>
-    const form = document.getElementById("loginForm");
-    const errorMsg = document.getElementById("errorMsg");
+  <div class="status" id="status"></div>
+</div>
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      errorMsg.textContent = "";
-
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      try {
-        const response = await fetch("http://localhost:3000/usuarios/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          alert("Bienvenido, " + data.usuario.nombre + "!");
-          // Redirigir a otra página si es necesario
-          // window.location.href = "/dashboard.html";
-        } else {
-          errorMsg.textContent = data.error;
-        }
-      } catch (error) {
-        errorMsg.textContent = "Error de conexión al servidor.";
-        console.error(error);
-      }
-    });
-  </script>
-
+  <script src="./Func/game.js"></script>
 </body>
 </html>

@@ -36,5 +36,58 @@ preguntasRouter.post("/", async (req, res) => {
   }
 });
 
+// Actualizar una pregunta por ID
+preguntasRouter.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { texto, opcionA, opcionB, opcionC, opcionD, respuestaCorrecta } = req.body;
+
+  try {
+    const repo = AppDataSource.getRepository(Preguntas);
+    const pregunta = await repo.findOneBy({ id: Number(id) });
+
+    if (!pregunta) {
+      return res.status(404).json({ error: "Pregunta no encontrada" });
+    }
+
+    // Actualizar campos
+    pregunta.texto = texto ?? pregunta.texto;
+    pregunta.opcionA = opcionA ?? pregunta.opcionA;
+    pregunta.opcionB = opcionB ?? pregunta.opcionB;
+    pregunta.opcionC = opcionC ?? pregunta.opcionC;
+    pregunta.opcionD = opcionD ?? pregunta.opcionD;
+    pregunta.respuestaCorrecta = respuestaCorrecta ?? pregunta.respuestaCorrecta;
+
+    await repo.save(pregunta);
+
+    res.json(pregunta);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al actualizar la pregunta" });
+  }
+});
+
+
+// Eliminar una pregunta por ID
+preguntasRouter.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const repo = AppDataSource.getRepository(Preguntas);
+    const pregunta = await repo.findOneBy({ id: Number(id) });
+
+    if (!pregunta) {
+      return res.status(404).json({ error: "Pregunta no encontrada" });
+    }
+
+    await repo.remove(pregunta);
+    res.json({ message: "Pregunta eliminada correctamente" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al eliminar la pregunta" });
+  }
+});
+
+
+
 export default preguntasRouter;
 
