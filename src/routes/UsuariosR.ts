@@ -55,4 +55,33 @@ usuarioRouter.post("/", async (req:Request, res:Response) => {
   }
 });
 
+usuarioRouter.post("/login", async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+
+    // Validar datos
+    if (!email || !password) {
+      return res.status(400).json({ error: "Todos los campos son obligatorios." });
+    }
+
+    // Buscar al usuario
+    const usuario = await AppDataSource.getRepository(Usuario).findOneBy({ email });
+    if (!usuario) {
+      return res.status(400).json({ error: "Correo o contraseña incorrectos." });
+    }
+
+    // Comparar contraseñas
+    const passwordValido = await bcrypt.compare(password, usuario.password);
+    if (!passwordValido) {
+      return res.status(400).json({ error: "Correo o contraseña incorrectos." });
+    }
+
+    // Éxito
+    res.json({ message: "Login exitoso.", usuario: { id: usuario.id, nombre: usuario.nombre, email: usuario.email } });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al iniciar sesión." });
+  }
+});
+
 export default usuarioRouter;
