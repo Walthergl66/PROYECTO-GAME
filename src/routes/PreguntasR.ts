@@ -3,9 +3,9 @@ import { Router } from "express";
 import { AppDataSource } from "../data-source";
 import { Preguntas } from "../models/Preguntas";
 
-const router = Router();
+const preguntasRouter = Router();
 
-router.get("/", async (req, res) => {
+preguntasRouter.get("/", async (req, res) => {
     try {
         const preguntas = await AppDataSource.getRepository(Preguntas).find();
         res.json(preguntas);
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 //Crear un pregunta
-router.post("/", async (req, res) => {
+preguntasRouter.post("/", async (req, res) => {
   try {
     const { texto, opcionA, opcionB, opcionC, opcionD, respuestaCorrecta } = req.body;
 
@@ -36,5 +36,5 @@ router.post("/", async (req, res) => {
   }
 });
 
-export default router;
+export default preguntasRouter;
 
