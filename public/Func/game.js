@@ -1,5 +1,6 @@
-const API_URL =`${window.location.origin}/api`; // Ajusta según tu API
-let preguntas = [];
+const API_BASE_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000'
+  : 'https://<tu-app>.azurestaticapps.net';let preguntas = [];
 let preguntaActual = 0;
 let score = 0;
 let vidas = 3;
