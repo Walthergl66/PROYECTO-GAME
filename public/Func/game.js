@@ -1,5 +1,6 @@
-const API_URL =`${window.location.origin}/api`; // Ajusta según tu API
+const API_URL = "http://localhost:4000/preguntas"; // Ajusta según tu API
 
+let preguntas = [];
 let preguntaActual = 0;
 let score = 0;
 let vidas = 3;
