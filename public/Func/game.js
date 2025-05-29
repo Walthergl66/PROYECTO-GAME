@@ -64,34 +64,6 @@ function actualizarStatus() {
   status.textContent = `Puntos: ${score} | Vidas: ${vidas}`;
 }
 
-// function mostrarResultadoFinal() {
-//   const game = document.getElementById("game");
-//   game.innerHTML = `<h2>Juego terminado</h2>
-//     <p>Puntos finales: ${score}</p>
-//     <button onclick="reiniciarJuego()">Jugar de nuevo</button>`;
-
-//   // Resetear la UI
-//   const status = document.getElementById("status");
-//   status.textContent = `Puntos: ${score} | Vidas: ${vidas}`;
-// }
-
-// function reiniciarJuego() {
-//   score = 0;
-//   vidas = 3;
-//   preguntaActual = 0;
-
-//   // Restaurar el HTML inicial del juego
-//   const game = document.getElementById("game");
-//   game.innerHTML = `
-//     <h2>Pregunta:</h2>
-//     <p id="question-text"></p>
-//     <div id="options-container"></div>
-//   `;
-
-//   fetchPreguntas();
-//   actualizarStatus();
-// }
-
 function mostrarResultadoFinal() {
   document.getElementById("question-container").style.display = "none";
   document.getElementById("status").style.display = "none";
