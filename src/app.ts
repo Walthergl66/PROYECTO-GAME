@@ -27,7 +27,6 @@ app.get("/", (req, res) => {
 
 // Variables de entorno
 const PORT = process.env.PORT || 4000;
-const BASE_URL =`https://blue-dune-0c95ab31e.6.azurestaticapps.net`;
 
 // Inicializar la base de datos y levantar el servidor
 AppDataSource.initialize()
@@ -35,7 +34,7 @@ AppDataSource.initialize()
     console.log("Conectado a la base de datos");
 
     app.listen(PORT, () => {
-      console.log(`Servidor backend corriendo en ${BASE_URL}`);
+      console.log(`Servidor backend corriendo en localhost`);
     });
   })
   .catch((err) => console.error("Error al conectar a la base de datos", err));
