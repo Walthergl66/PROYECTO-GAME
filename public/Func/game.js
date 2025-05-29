@@ -1,4 +1,4 @@
-const API_URL = `${window.location.origin}/preguntas`
+const API_URL = `https://blue-dune-0c95ab31e.6.azurestaticapps.net/preguntas`
 
 let preguntas = [];
 let preguntaActual = 0;

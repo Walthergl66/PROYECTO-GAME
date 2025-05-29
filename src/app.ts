@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 
 // Variables de entorno
 const PORT = process.env.PORT || 4000;
-const BASE_URL = process.env.BASE_URL || `db.qmyxurmruookhvmhvhor.supabase.co`;
+const BASE_URL =`https://blue-dune-0c95ab31e.6.azurestaticapps.net`;
 
 // Inicializar la base de datos y levantar el servidor
 AppDataSource.initialize()

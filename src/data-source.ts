@@ -5,8 +5,8 @@ require('dotenv').config();
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT || "5432"),
+  host: "aws-0-us-east-2.pooler.supabase.com",
+  port: 6543,
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
