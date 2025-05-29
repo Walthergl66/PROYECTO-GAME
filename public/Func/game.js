@@ -1,4 +1,4 @@
-const API_URL = `http://localhost:4000/Preguntas`;
+const API_URL = `${window.location.origin}/api`;
 
 let preguntas = [];
 let preguntaActual = 0;
