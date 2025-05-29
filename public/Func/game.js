@@ -1,11 +1,4 @@
-const API_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:4000'
-  : 'https://blue-dune-0c95ab31e.6.azurestaticapps.net/';
-
-async function fetchPreguntas() {
-  const res = await fetch(`${API_BASE_URL}/api/preguntas`);
-  // resto...
-}
+const API_URL = `${window.location.origin}/preguntas`
 
 let preguntas = [];
 let preguntaActual = 0;
