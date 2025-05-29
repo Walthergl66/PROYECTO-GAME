@@ -5,29 +5,31 @@ import { AppDataSource } from "./data-source";
 import preguntasRouter from "./routes/PreguntasR";
 import usuarioRouter from "./routes/UsuariosR";
 import cors from "cors";
-import path from "path"
+import path from "path";
 
 const app = express();
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "../public")))
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, "../public")));
 
-app.use("/Preguntas", preguntasRouter)
-app.use("/usuarios", usuarioRouter)
+// Rutas de la API
+app.use("/Preguntas", preguntasRouter);
+app.use("/usuarios", usuarioRouter);
 
-
+// Ruta raíz (index.html)
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
-})
+});
 
-
-
-// Conectar a la base de datos
+// Variables de entorno
 const PORT = process.env.PORT || 4000;
 const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
+// Inicializar la base de datos y levantar el servidor
 AppDataSource.initialize()
   .then(() => {
     console.log("Conectado a la base de datos");
