@@ -5,12 +5,15 @@ import { Preguntas } from "../models/Preguntas";
 
 const preguntasRouter = Router();
 
+
+
 preguntasRouter.get("/", async (req, res) => {
     try {
         const preguntas = await AppDataSource.getRepository(Preguntas).find();
         res.json(preguntas);
     } catch (error) {
-        res.status
+        console.error(error);  // Muestra error en consola
+        res.status(500).json({ error: "Error al obtener preguntas" }); // Envía mensaje al frontend
     }
 });
 

@@ -16,6 +16,7 @@ async function fetchPreguntas() {
   }
 }
 
+
 function mostrarPregunta() {
   const questionText = document.getElementById("question-text");
   const optionsContainer = document.getElementById("options-container");
