@@ -8,7 +8,7 @@ import cors from "cors";
 import path from "path"
 
 const app = express();
-
+const PORT = parseInt(process.env.PORT || "3000", 10);
 
 app.use(cors());
 app.use(express.json());
@@ -24,17 +24,16 @@ app.get("/", (req, res) => {
 })
 
 
-
-// Conectar a la base de datos
-
-const PORT = parseInt(process.env.PORT || "3000", 10); // <- aquí
-
+// 🗄️ Conexión a la base de datos y arranque del servidor
 AppDataSource.initialize()
   .then(() => {
-    console.log("Conectado a la base de datos");
+    console.log("✅ Conectado a la base de datos");
 
-    app.listen(PORT, () => { // <- y aquí
-      console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    // 🔈 Escucha en todas las interfaces (necesario para Cloud Run)
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`🚀 Servidor corriendo en http://0.0.0.0:${PORT}`);
     });
   })
-  .catch((err) => console.error("Error al conectar a la base de datos", err));
+  .catch((err) => {
+    console.error("❌ Error al conectar a la base de datos:", err);
+  });
