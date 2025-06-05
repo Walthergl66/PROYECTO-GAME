@@ -8,7 +8,8 @@ import cors from "cors";
 import path from "path"
 
 const app = express();
-const PORT = parseInt(process.env.PORT || "3000", 10);
+
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -30,8 +31,8 @@ AppDataSource.initialize()
     console.log("✅ Conectado a la base de datos");
 
     // 🔈 Escucha en todas las interfaces (necesario para Cloud Run)
-    app.listen(PORT, "0.0.0.0", () => {
-      console.log(`🚀 Servidor corriendo en http://0.0.0.0:${PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Servidor corriendo en el puerto ${PORT}`);
     });
   })
   .catch((err) => {
