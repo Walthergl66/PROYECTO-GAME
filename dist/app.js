@@ -12,7 +12,7 @@ const UsuariosR_1 = __importDefault(require("./routes/UsuariosR"));
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
-const PORT = parseInt(process.env.PORT || "3000", 10);
+const PORT = process.env.PORT || 8080;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.static(path_1.default.join(__dirname, "../public")));
@@ -26,8 +26,8 @@ data_source_1.AppDataSource.initialize()
     .then(() => {
     console.log("✅ Conectado a la base de datos");
     // 🔈 Escucha en todas las interfaces (necesario para Cloud Run)
-    app.listen(PORT, "0.0.0.0", () => {
-        console.log(`🚀 Servidor corriendo en http://0.0.0.0:${PORT}`);
+    app.listen(PORT, () => {
+        console.log(`Servidor corriendo en el puerto ${PORT}`);
     });
 })
     .catch((err) => {
