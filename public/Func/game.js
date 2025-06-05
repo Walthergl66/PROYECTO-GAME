@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/preguntas"; // Ajusta según tu API
+const API_URL = "https://proyecto-game-504888284293.us-central1.run.app/preguntas"; // Ajusta según tu API
 let preguntas = [];
 let preguntaActual = 0;
 let score = 0;
