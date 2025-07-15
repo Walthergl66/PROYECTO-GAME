@@ -1,4 +1,5 @@
-const API_URL = "https://proyecto-game-504888284293.us-central1.run.app/preguntas"; // Ajusta según tu API
+const API_URL = "http://localhost:8080/preguntas";
+
 let preguntas = [];
 let preguntaActual = 0;
 let score = 0;
@@ -9,19 +10,17 @@ async function fetchPreguntas() {
   try {
     const res = await fetch(API_URL);
     preguntas = await res.json();
-    preguntas = preguntas.sort(() => Math.random() - 0.5); 
+    preguntas = preguntas.sort(() => Math.random() - 0.5);
     mostrarPregunta();
   } catch (error) {
     console.error("Error al obtener preguntas:", error);
   }
 }
 
-
 function mostrarPregunta() {
   const questionText = document.getElementById("question-text");
   const optionsContainer = document.getElementById("options-container");
 
-  // Verificar si el juego debe terminar
   if (vidas <= 0 || preguntas.length === 0) {
     mostrarResultadoFinal();
     return;
