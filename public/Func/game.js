@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/preguntas";
+const API_URL = "http://3.134.79.113:8080/preguntas";
 
 let preguntas = [];
 let preguntaActual = 0;
